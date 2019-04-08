@@ -7,8 +7,6 @@ use app\models\CategorySearch;
 use Yii;
 use yii\filters\VerbFilter;
 use yii\web\NotFoundHttpException;
-use yii\data\ActiveDataProvider;
-use app\models\Post;
 
 /**
  * CategoryController implements the CRUD actions for Category model.
@@ -64,8 +62,6 @@ class CategoryController extends BaseController
         ]);
     }
 
-    
-
     /**
      * Creates a new Category model.
      * If creation is successful, the browser will be redirected to the 'view' page.
@@ -80,11 +76,16 @@ class CategoryController extends BaseController
             if ($_FILES) {
                 $model->saveUploadedFile($model, 'file');
             }
-            $model->save();
-            return $this->redirect([
-                'view',
-                'id' => $model->id
-            ]);
+            $model->create_user_id = \Yii::$app->user->id;
+            if ($model->save()) {
+                return $this->redirect([
+                    'view',
+                    'id' => $model->id
+                ]);
+            } else {
+                print_r($model->getErrors());
+                exit();
+            }
         }
         
         return $this->render('create', [
@@ -106,7 +107,7 @@ class CategoryController extends BaseController
         $old_file = $model->file;
         
         if ($model->load(Yii::$app->request->post())) {
-            if (isset($_FILES) && ! empty($_FILES)) {
+            if (isset($_FILES['Category']['name']['file']) && ! empty($_FILES['Category']['name']['file'])) {
                 $imageFile = $model->saveUploadedFile($model, 'file', $old_file);
             } else {
                 $model->file = $old_file;

@@ -125,31 +125,9 @@ class Category extends BaseActiveRecord
      *
      * @return \yii\db\ActiveQuery
      */
-    public function getCreateUser0()
+    public function getMenu()
     {
-        return $this->hasOne(User::className(), [
-            'id' => 'create_user_id'
-        ]);
-    }
-
-    /**
-     *
-     * @return \yii\db\ActiveQuery
-     */
-    public function getTblPosts()
-    {
-        return $this->hasMany(Post::className(), [
-            'category_id' => 'id'
-        ]);
-    }
-
-    /**
-     *
-     * @return \yii\db\ActiveQuery
-     */
-    public function getTblPosts0()
-    {
-        return $this->hasMany(Post::className(), [
+        return $this->hasMany(Menu::className(), [
             'category_id' => 'id'
         ]);
     }

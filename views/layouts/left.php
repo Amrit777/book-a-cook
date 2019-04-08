@@ -34,34 +34,7 @@
                         '/user'
                     ]
                 ],
-                [
-                    'label' => 'labels',
-                    'icon' => 'users',
-                    'url' => [
-                        '/main-header'
-                    ]
-                ],
-                [
-                    'label' => 'sub-labels',
-                    'icon' => 'users',
-                    'url' => [
-                        '/sub-header'
-                    ]
-                ],
-                [
-                    'label' => 'Media',
-                    'icon' => 'picture-o',
-                    'url' => [
-                        '/media/'
-                    ]
-                ],
-                [
-                    'label' => 'Banner',
-                    'icon' => 'picture-o',
-                    'url' => [
-                        '/banner'
-                    ]
-                ],
+                
                 [
                     'label' => 'Category',
                     'icon' => 'picture-o',
@@ -70,17 +43,10 @@
                     ]
                 ],
                 [
-                    'label' => 'Post',
+                    'label' => 'Menu',
                     'icon' => 'picture-o',
                     'url' => [
-                        '/post'
-                    ]
-                ],
-                [
-                    'label' => \yii::t('app', 'Page'),
-                    'icon' => 'first-order',
-                    'url' => [
-                        '/page'
+                        '/menu'
                     ]
                 ]
             

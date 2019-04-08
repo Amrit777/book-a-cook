@@ -3,15 +3,10 @@ namespace app\controllers;
 
 use app\components\BaseController;
 use app\models\ContactForm;
-use app\models\Page;
 use app\models\User;
 use Yii;
-use yii\data\ActiveDataProvider;
 use yii\filters\AccessControl;
 use yii\filters\VerbFilter;
-use yii\web\NotFoundHttpException;
-use app\models\Post;
-use yii\base\Controller;
 
 class SiteController extends BaseController
 {
@@ -80,33 +75,36 @@ class SiteController extends BaseController
      */
     public function actionIndex()
     {
-        if (User::isAdmin() || User::isManager()) {
+        if (User::isAdmin()) {
+            $this->layout = "main";
             return $this->redirect([
                 '/user/dashboard'
             ]);
         }
         
-        $dataProvider = new ActiveDataProvider([
-            'query' => Post::find(),
-            'pagination' => [
-                'pageSize' => 5
-            ],
-            'sort' => [
-                'defaultOrder' => [
-                    'id' => SORT_DESC
-                ]
-            ]
-        ]);
-        $bannerModel = Post::find()->where([
-            'type_id' => 1
-        ])
-            ->orderBy("rand()")
-            ->limit(3)
-            ->all();
-        return $this->render('index', [
-            'dataProvider' => $dataProvider,
-            'bannerModel' => $bannerModel
-        ]);
+        // $dataProvider = new ActiveDataProvider([
+        // 'query' => Post::find(),
+        // 'pagination' => [
+        // 'pageSize' => 5
+        // ],
+        // 'sort' => [
+        // 'defaultOrder' => [
+        // 'id' => SORT_DESC
+        // ]
+        // ]
+        // ]);
+        // $bannerModel = Post::find()->where([
+        // 'type_id' => 1
+        // ])
+        // ->orderBy("rand()")
+        // ->limit(3)
+        // ->all();
+        return $this->render('index');
+        // , [
+        // 'dataProvider' => $dataProvider,
+        // 'bannerModel' => $bannerModel
+        // ]
+        
     }
 
     /**
@@ -130,20 +128,6 @@ class SiteController extends BaseController
         ]);
     }
 
-    public function actionFaq()
-    {
-        $model = Page::find();
-        $dataProvider = new ActiveDataProvider([
-            'query' => $model,
-            'pagination' => [
-                'pageSize' => 2
-            ]
-        ]);
-        return $this->render('faq', [
-            'dataProvider' => $dataProvider
-        ]);
-    }
-
     public function actionTermCondition()
     {
         return $this->render('term-condition');
@@ -162,20 +146,5 @@ class SiteController extends BaseController
     public function actionPrivacyPolicy()
     {
         return $this->render('privacy-policy');
-    }
-
-    public function actionSupport($slug)
-    {
-        $model = Page::find()->where([
-            'state_id' => Page::STATE_ACTIVE,
-            'slug' => $slug
-        ])->one();
-        
-        if (empty($model)) {
-            throw new NotFoundHttpException(Yii::t('app', 'The requested page does not exist.'));
-        }
-        return $this->render('support', [
-            'model' => $model
-        ]);
     }
 }

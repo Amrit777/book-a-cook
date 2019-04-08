@@ -65,17 +65,17 @@ class BaseController extends \yii\web\Controller
             }
         }
         
-        $this->posts = new ActiveDataProvider([
-            'query' => Post::find(),
-            'pagination' => [
-                'pageSize' => 6
-            ],
-            'sort' => [
-                'defaultOrder' => [
-                    'id' => SORT_DESC
-                ]
-            ]
-        ]);
+//         $this->posts = new ActiveDataProvider([
+//             'query' => Post::find(),
+//             'pagination' => [
+//                 'pageSize' => 6
+//             ],
+//             'sort' => [
+//                 'defaultOrder' => [
+//                     'id' => SORT_DESC
+//                 ]
+//             ]
+//         ]);
         
         return parent::beforeAction($action);
     }

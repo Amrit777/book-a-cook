@@ -10,7 +10,7 @@ use yii\helpers\HtmlPurifier;
 
 $this->title = $model->title;
 $this->params['breadcrumbs'][] = [
-    'label' => Yii::t('app', 'Banners'),
+    'label' => Yii::t('app', 'Category'),
     'url' => [
         'index'
     ]
