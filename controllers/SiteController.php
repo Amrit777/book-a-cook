@@ -7,6 +7,8 @@ use app\models\User;
 use Yii;
 use yii\filters\AccessControl;
 use yii\filters\VerbFilter;
+use app\models\Menu;
+use yii\data\ActiveDataProvider;
 
 class SiteController extends BaseController
 {
@@ -83,7 +85,7 @@ class SiteController extends BaseController
         }
         
         $dataProvider = new ActiveDataProvider([
-            'query' => Post::find(),
+            'query' => Menu::find(),
             'pagination' => [
                 'pageSize' => 5
             ],
@@ -93,16 +95,13 @@ class SiteController extends BaseController
                 ]
             ]
         ]);
-        $bannerModel = Menu::find()
-            ->orderBy("rand()")
+        $bannerModel = Menu::find()->orderBy("rand()")
             ->limit(3)
             ->all();
-        return $this->render('index'
-        , [
-        'dataProvider' => $dataProvider,
-        'bannerModel' => $bannerModel
-        ]
-            
+        return $this->render('index', [
+            'dataProvider' => $dataProvider,
+            'bannerModel' => $bannerModel
+        ]);
     }
 
     /**

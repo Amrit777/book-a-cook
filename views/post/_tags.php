@@ -1,7 +1,7 @@
 <?php
-use app\models\Tag;
+use app\models\Category;
 use yii\helpers\Url;
-$tagModel = Tag::find()->limit(10)->all();
+$tagModel = Category::find()->limit(10)->all();
 ?>
 <div class="row bottom tags-wrap">
 	<div class="col-full tags">

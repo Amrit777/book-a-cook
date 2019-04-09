@@ -1,6 +1,7 @@
 <?php
 namespace app\components;
 
+use app\models\Menu;
 use app\models\User;
 use yii\filters\AccessControl;
 use app\models\Post;
@@ -65,17 +66,17 @@ class BaseController extends \yii\web\Controller
             }
         }
         
-//         $this->posts = new ActiveDataProvider([
-//             'query' => Post::find(),
-//             'pagination' => [
-//                 'pageSize' => 6
-//             ],
-//             'sort' => [
-//                 'defaultOrder' => [
-//                     'id' => SORT_DESC
-//                 ]
-//             ]
-//         ]);
+        $this->posts = new ActiveDataProvider([
+            'query' => Menu::find(),
+            'pagination' => [
+                'pageSize' => 6
+            ],
+            'sort' => [
+                'defaultOrder' => [
+                    'id' => SORT_DESC
+                ]
+            ]
+        ]);
         
         return parent::beforeAction($action);
     }
