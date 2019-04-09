@@ -82,29 +82,27 @@ class SiteController extends BaseController
             ]);
         }
         
-        // $dataProvider = new ActiveDataProvider([
-        // 'query' => Post::find(),
-        // 'pagination' => [
-        // 'pageSize' => 5
-        // ],
-        // 'sort' => [
-        // 'defaultOrder' => [
-        // 'id' => SORT_DESC
-        // ]
-        // ]
-        // ]);
-        // $bannerModel = Post::find()->where([
-        // 'type_id' => 1
-        // ])
-        // ->orderBy("rand()")
-        // ->limit(3)
-        // ->all();
-        return $this->render('index');
-        // , [
-        // 'dataProvider' => $dataProvider,
-        // 'bannerModel' => $bannerModel
-        // ]
-        
+        $dataProvider = new ActiveDataProvider([
+            'query' => Post::find(),
+            'pagination' => [
+                'pageSize' => 5
+            ],
+            'sort' => [
+                'defaultOrder' => [
+                    'id' => SORT_DESC
+                ]
+            ]
+        ]);
+        $bannerModel = Menu::find()
+            ->orderBy("rand()")
+            ->limit(3)
+            ->all();
+        return $this->render('index'
+        , [
+        'dataProvider' => $dataProvider,
+        'bannerModel' => $bannerModel
+        ]
+            
     }
 
     /**

@@ -4,11 +4,11 @@ use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 
 /* @var $this yii\web\View */
-/* @var $model app\models\PostCommentSearch */
+/* @var $model app\models\MenuSearch */
 /* @var $form yii\widgets\ActiveForm */
 ?>
 
-<div class="post-comment-search">
+<div class="menu-search">
 
     <?php $form = ActiveForm::begin([
         'action' => ['index'],
@@ -20,13 +20,19 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'id') ?>
 
-    <?= $form->field($model, 'comment_content') ?>
+    <?= $form->field($model, 'title') ?>
 
-    <?= $form->field($model, 'post_id') ?>
+    <?= $form->field($model, 'category_id') ?>
 
-    <?= $form->field($model, 'created_on') ?>
+    <?= $form->field($model, 'content') ?>
 
-    <?= $form->field($model, 'updated_on') ?>
+    <?= $form->field($model, 'price') ?>
+
+    <?php // echo $form->field($model, 'time_to_prepare') ?>
+
+    <?php // echo $form->field($model, 'created_on') ?>
+
+    <?php // echo $form->field($model, 'updated_on') ?>
 
     <?php // echo $form->field($model, 'state_id') ?>
 
@@ -35,8 +41,8 @@ use yii\widgets\ActiveForm;
     <?php // echo $form->field($model, 'create_user_id') ?>
 
     <div class="form-group">
-        <?= Html::submitButton(Yii::t('app', 'Search'), ['class' => 'btn btn-primary']) ?>
-        <?= Html::resetButton(Yii::t('app', 'Reset'), ['class' => 'btn btn-default']) ?>
+        <?= Html::submitButton('Search', ['class' => 'btn btn-primary']) ?>
+        <?= Html::resetButton('Reset', ['class' => 'btn btn-default']) ?>
     </div>
 
     <?php ActiveForm::end(); ?>

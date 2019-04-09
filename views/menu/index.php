@@ -4,19 +4,20 @@ use yii\helpers\Html;
 use yii\grid\GridView;
 use yii\widgets\Pjax;
 /* @var $this yii\web\View */
+/* @var $searchModel app\models\MenuSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = Yii::t('app', 'Main Headers');
+$this->title = 'Menus';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="main-header-index">
+<div class="menu-index">
 
     <h1><?= Html::encode($this->title) ?></h1>
     <?php Pjax::begin(); ?>
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <p>
-        <?= Html::a(Yii::t('app', 'Create Main Header'), ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Create Menu', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
     <?= GridView::widget([
@@ -27,12 +28,16 @@ $this->params['breadcrumbs'][] = $this->title;
 
             'id',
             'title',
-            'link_url:url',
-            'state_id',
-            'type_id',
+            'category_id',
+            'content',
+            'price',
+            //'time_to_prepare:datetime',
             //'created_on',
             //'updated_on',
+            //'state_id',
+            //'type_id',
             //'create_user_id',
+
             ['class' => 'yii\grid\ActionColumn'],
         ],
     ]); ?>

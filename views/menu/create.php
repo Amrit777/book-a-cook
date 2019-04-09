@@ -2,15 +2,14 @@
 
 use yii\helpers\Html;
 
-
 /* @var $this yii\web\View */
-/* @var $model app\models\SubHeader */
+/* @var $model app\models\Menu */
 
-$this->title = Yii::t('app', 'Create Sub Header');
-$this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Sub Headers'), 'url' => ['index']];
+$this->title = 'Create Menu';
+$this->params['breadcrumbs'][] = ['label' => 'Menus', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="sub-header-create">
+<div class="menu-create">
 
     <h1><?= Html::encode($this->title) ?></h1>
 
