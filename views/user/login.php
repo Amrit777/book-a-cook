@@ -83,12 +83,13 @@ $fieldOptions2 = [
 						<h3><?= \Yii::t('app', 'Register')?></h3>
 					</div>
 					<?php $form = ActiveForm::begin(['action'=>Url::toRoute('/user/signup')]); ?>
+		<span>Register as:</span>
+        <?= $form->field($userModel, 'role_id')->dropDownList(["3" => "Cook","4" => "Customer"],['maxlength' => true,  'placeholder' => \Yii::t('app', 'Register as....') ])->label ( false )?>
 
         <?= $form->field($userModel, 'email', $fieldOptions1)->textInput(['maxlength' => true,  'placeholder' => \Yii::t('app', 'Email Address') ])->label ( false )?>
         
         <?= $form->field($userModel, 'full_name', $fieldOptions1)->textInput(['maxlength' => true,  'placeholder' => \Yii::t('app', 'Full Name') ])->label ( false )?>
-                <?= $form->field($userModel, 'username', $fieldOptions1)->textInput(['maxlength' => true,  'placeholder' => \Yii::t('app', 'User Name') ])->label ( false )?>
-        
+        <?= $form->field($userModel, 'contact_no', $fieldOptions1)->textInput(['maxlength' => true,  'placeholder' => \Yii::t('app', 'Contact Number') ])->label ( false )?>
         <?= $form->field($userModel, 'password', $fieldOptions2)->passwordInput(['maxlength' => true,  'placeholder' => \Yii::t('app', 'Password') ])->label ( false )?>
 
         <?= $form->field($userModel, 'confirm_password', $fieldOptions2)->passwordInput(['maxlength' => true,  'placeholder' => \Yii::t('app', 'Confirm Password') ])->label ( false )?>

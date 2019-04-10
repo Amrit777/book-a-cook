@@ -1,5 +1,6 @@
 <?php
 use yii\helpers\Html;
+use app\widgets\Alert;
 ?>
 <?php $this->beginPage() ?>
 
@@ -11,7 +12,7 @@ use yii\helpers\Html;
 <!--- basic page needs
     ================================================== -->
 <meta charset="utf-8">
-<title>Philosophy</title>
+<title>Book Your Cook</title>
 
 <!-- mobile specific metas
     ================================================== -->
@@ -51,43 +52,13 @@ use yii\helpers\Html;
 			<div class="header__content row">
 
 				<div class="header__logo">
-					<a class="logo" href="index.html"> <img
-						src="<?php echo \Yii::$app->view->theme->getUrl('/frontend/img/logo.svg') ?>"
-						alt="Homepage">
-					</a>
+					<!-- 					<h4 > -->
+					<a class="logo" href="<?php echo Yii::$app->homeUrl?>"> Book Your
+						Cook</a>
+					<!-- 						</hr> -->
+
 				</div>
 				<!-- end header__logo -->
-
-				<ul class="header__social">
-					<li><a href="#0"><i class="fa fa-facebook" aria-hidden="true"></i></a>
-					</li>
-					<li><a href="#0"><i class="fa fa-twitter" aria-hidden="true"></i></a>
-					</li>
-					<li><a href="#0"><i class="fa fa-instagram" aria-hidden="true"></i></a>
-					</li>
-					<li><a href="#0"><i class="fa fa-pinterest" aria-hidden="true"></i></a>
-					</li>
-				</ul>
-				<!-- end header__social -->
-
-				<a class="header__search-trigger" href="#0"></a>
-
-				<div class="header__search">
-
-					<form role="search" method="get" class="header__search-form"
-						action="#">
-						<label> <span class="hide-content">Search for:</span> <input
-							type="search" class="search-field" placeholder="Type Keywords"
-							value="" name="s" title="Search for:" autocomplete="off">
-						</label> <input type="submit" class="search-submit" value="Search">
-					</form>
-
-					<a href="#0" title="Close Search" class="header__overlay-close">Close</a>
-
-				</div>
-				<!-- end header__search -->
-
-
 				<a class="header__toggle-menu" href="#0" title="Menu"><span>Menu</span></a>
 
 				<nav class="header__nav-wrap">
@@ -110,6 +81,8 @@ use yii\helpers\Html;
 
 	<!-- s-content
     ================================================== -->
+           <?=Alert::widget ( [ 'options' => [ 'class' => 'alert-info' ] ] );?>
+
 	<?=$content;?>
 	<!-- s-extra
     ================================================== -->
@@ -120,7 +93,7 @@ use yii\helpers\Html;
 			<!-- end popular -->
 
 			<div class="col-four md-six tab-full about">
-				<h3>About Philosophy</h3>
+				<h3>About Book Your Cook</h3>
 
 				<p>Donec sollicitudin molestie malesuada. Nulla quis lorem ut libero
 					malesuada feugiat. Pellentesque in ipsum id orci porta dapibus.
@@ -240,7 +213,7 @@ use yii\helpers\Html;
 			<div class="row">
 				<div class="col-full">
 					<div class="s-footer__copyright">
-						<span>© Copyright Amrit 2018</span>
+						<span>© Copyright Gursahib Brar 2019</span>
 					</div>
 					<div class="go-top">
 						<a class="smoothscroll" title="Back to Top" href="#top"></a>

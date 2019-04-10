@@ -11,7 +11,7 @@ use dmstr\widgets\Alert;
 	</section>
 
 	<section class="content">
-        <?=Alert::widget ( [ 'options' => [ 'class' => 'alert-info' ] ] );?>
+        <?=\app\widgets\Alert::widget ( [ 'options' => [ 'class' => 'alert-info' ] ] );?>
         <?= $content ?>
     </section>
 </div>

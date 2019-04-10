@@ -20,20 +20,17 @@ use yii\helpers\Url;
 				<div class="slider__slides">
 <?php
 
-$files = $model->getFile($model);
-if (! empty($files)) {
-    foreach ($files as $file) {
-        ?>
+if (! empty ( $model->file )) {
+	?>
         <div class="slider__slide">
         <?php
-        echo $model->displayImage($file->file_name, $default = 'default.jpg', $options = [
-            'sizes' => "(max-width: 2000px) 100vw, 2000px",
-            'alt' => "Image"
-        ]);
-        ?>
+	echo $model->displayImage ( $model->file, $default = 'default.jpg', $options = [ 
+			'sizes' => "(max-width: 2000px) 100vw, 2000px",
+			'alt' => "Image" 
+	] );
+	?>
         </div>
         <?php
-    }
 }
 ?>
 					
@@ -44,9 +41,15 @@ if (! empty($files)) {
 
 		<div class="col-full s-content__main">
 
-			<p class="lead"><?= $model->content?></p>
+			<p class="lead">Menu Description: <?= $model->content?></p>
 
-			<p><?= $model->content?></p>
+			<p>Price: <?= $model->price?></p>
+			<p>Preparation Time: <?= $model->time_to_prepare?></p>
+			<p>Cooked by: <?= $model->createUser->full_name?></p>
+			<p>Cook contact: <?= $model->createUser->contact_no?></p>
+			
+
+
 
 		</div>
 	</article>

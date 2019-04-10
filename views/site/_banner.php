@@ -6,7 +6,7 @@ if (! empty($bannerModel)) {
         $list['title'] = $value->title;
         $list['id'] = $value->id;
         $list['category'] = $value->category->title;
-        $list['file'] = $value->getImageFile($value, null, [], false, $value->title, false);
+//         $list['file'] = $value->getImageFile($value, null, [], false, $value->title, false);
         $list['created_by'] = $value->getCreatedUser();
         $list['post_date'] = $value->created_on;
         $data[$key][] = $list;
