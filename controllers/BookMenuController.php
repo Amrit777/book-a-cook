@@ -3,16 +3,16 @@
 namespace app\controllers;
 
 use Yii;
-use app\models\PostShare;
-use app\models\PostShareSearch;
+use app\models\BookMenu;
+use app\models\BookMenuSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
 /**
- * PostShareController implements the CRUD actions for PostShare model.
+ * BookMenuController implements the CRUD actions for BookMenu model.
  */
-class PostShareController extends Controller
+class BookMenuController extends Controller
 {
     /**
      * {@inheritdoc}
@@ -30,12 +30,12 @@ class PostShareController extends Controller
     }
 
     /**
-     * Lists all PostShare models.
+     * Lists all BookMenu models.
      * @return mixed
      */
     public function actionIndex()
     {
-        $searchModel = new PostShareSearch();
+        $searchModel = new BookMenuSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('index', [
@@ -45,7 +45,7 @@ class PostShareController extends Controller
     }
 
     /**
-     * Displays a single PostShare model.
+     * Displays a single BookMenu model.
      * @param integer $id
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
@@ -58,13 +58,13 @@ class PostShareController extends Controller
     }
 
     /**
-     * Creates a new PostShare model.
+     * Creates a new BookMenu model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
     public function actionCreate()
     {
-        $model = new PostShare();
+        $model = new BookMenu();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
@@ -76,7 +76,7 @@ class PostShareController extends Controller
     }
 
     /**
-     * Updates an existing PostShare model.
+     * Updates an existing BookMenu model.
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param integer $id
      * @return mixed
@@ -96,7 +96,7 @@ class PostShareController extends Controller
     }
 
     /**
-     * Deletes an existing PostShare model.
+     * Deletes an existing BookMenu model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      * @param integer $id
      * @return mixed
@@ -110,18 +110,18 @@ class PostShareController extends Controller
     }
 
     /**
-     * Finds the PostShare model based on its primary key value.
+     * Finds the BookMenu model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param integer $id
-     * @return PostShare the loaded model
+     * @return BookMenu the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
     {
-        if (($model = PostShare::findOne($id)) !== null) {
+        if (($model = BookMenu::findOne($id)) !== null) {
             return $model;
         }
 
-        throw new NotFoundHttpException(Yii::t('app', 'The requested page does not exist.'));
+        throw new NotFoundHttpException('The requested page does not exist.');
     }
 }

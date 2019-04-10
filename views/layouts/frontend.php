@@ -1,5 +1,6 @@
 <?php
 use yii\helpers\Html;
+use app\widgets\Alert;
 ?>
 <?php $this->beginPage() ?>
 
@@ -11,7 +12,7 @@ use yii\helpers\Html;
 <!--- basic page needs
     ================================================== -->
 <meta charset="utf-8">
-<title>Book A Cook</title>
+<title>Book Your Cook</title>
 
 <!-- mobile specific metas
     ================================================== -->
@@ -52,7 +53,8 @@ use yii\helpers\Html;
 
 				<div class="header__logo">
 					<!-- 					<h4 > -->
-					<a class="logo" href="<?php echo Yii::$app->homeUrl?>"> Book A Cook</a>
+					<a class="logo" href="<?php echo Yii::$app->homeUrl?>"> Book Your
+						Cook</a>
 					<!-- 						</hr> -->
 
 				</div>
@@ -79,6 +81,8 @@ use yii\helpers\Html;
 
 	<!-- s-content
     ================================================== -->
+           <?=Alert::widget ( [ 'options' => [ 'class' => 'alert-info' ] ] );?>
+
 	<?=$content;?>
 	<!-- s-extra
     ================================================== -->
@@ -89,7 +93,7 @@ use yii\helpers\Html;
 			<!-- end popular -->
 
 			<div class="col-four md-six tab-full about">
-				<h3>About Book A Cook</h3>
+				<h3>About Book Your Cook</h3>
 
 				<p>Donec sollicitudin molestie malesuada. Nulla quis lorem ut libero
 					malesuada feugiat. Pellentesque in ipsum id orci porta dapibus.
@@ -209,7 +213,7 @@ use yii\helpers\Html;
 			<div class="row">
 				<div class="col-full">
 					<div class="s-footer__copyright">
-						<span>© Copyright Amrit 2018</span>
+						<span>© Copyright Gursahib Brar 2019</span>
 					</div>
 					<div class="go-top">
 						<a class="smoothscroll" title="Back to Top" href="#top"></a>

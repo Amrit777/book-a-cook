@@ -2,6 +2,7 @@
 use yii\helpers\Html;
 use yii\helpers\Url;
 use app\models\User;
+use app\widgets\Alert;
 
 /* @var $this \yii\web\View */
 /* @var $content string */
@@ -21,17 +22,17 @@ use app\models\User;
 
 			<ul class="nav navbar-nav">
 
-				
+
 				<li class="dropdown notifications-menu"><a href="#"
 					class="dropdown-toggle" data-toggle="dropdown"> <i
 						class="fa fa-bell-o"></i> <span class="label label-warning">0</span>
 				</a>
 					<ul class="dropdown-menu">
 						<li class="header">You have 0 notifications</li>
-						
+
 						<li class="footer"><a href="#">View all</a></li>
 					</ul></li>
-				
+
 				<!-- User Account: style can be found in dropdown.less -->
 
 				<li class="dropdown user user-menu"><a href="#"
@@ -51,7 +52,9 @@ use app\models\User;
 						<!-- Menu Footer-->
 						<li class="user-footer">
 							<div class="pull-left">
-								<a href="<?= Url::toRoute(['/user/view', 'id' => \Yii::$app->user->id]) ?>" class="btn btn-default btn-flat">Profile</a>
+								<a
+									href="<?= Url::toRoute(['/user/view', 'id' => \Yii::$app->user->id]) ?>"
+									class="btn btn-default btn-flat">Profile</a>
 							</div>
 							<div class="pull-right">
                                 <?=Html::a ( 'Sign out', [ '/user/logout' ], [ 'data-method' => 'post','class' => 'btn btn-default btn-flat' ] )?>
@@ -69,3 +72,5 @@ use app\models\User;
 		</div>
 	</nav>
 </header>
+<?=Alert::widget ( [ 'options' => [ 'class' => 'alert-info' ] ] );?>
+
