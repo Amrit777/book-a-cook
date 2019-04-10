@@ -942,3 +942,15 @@ textarea {
 }
 
 /*# sourceMappingURL=base.css.map */
+.book-menu-create {
+    background: white;
+}
+.menu-view {
+    background: white;
+}
+.menu-update {
+    background: white;
+}
+.menu-index {
+    background: white;
+}

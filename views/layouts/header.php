@@ -3,6 +3,7 @@ use yii\helpers\Html;
 use yii\helpers\Url;
 use app\models\User;
 use app\widgets\Alert;
+use yii2mod\alert\AlertAsset;
 
 /* @var $this \yii\web\View */
 /* @var $content string */
@@ -72,5 +73,5 @@ use app\widgets\Alert;
 		</div>
 	</nav>
 </header>
-<?=Alert::widget ( [ 'options' => [ 'class' => 'alert-info' ] ] );?>
+<?=\yii2mod\alert\Alert::widget ( [ 'options' => [ 'class' => 'alert-info' ] ] );?>
 

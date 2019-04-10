@@ -105,4 +105,9 @@ class BookMenu extends \yii\db\ActiveRecord {
 				'id' => 'create_user_id' 
 		] );
 	}
+	public function getMenu() {
+		return $this->hasOne ( Menu::className (), [ 
+				'id' => 'menu_id' 
+		] );
+	}
 }

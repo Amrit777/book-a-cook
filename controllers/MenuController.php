@@ -3,16 +3,15 @@
 namespace app\controllers;
 
 use app\components\BaseController;
+use app\models\Category;
 use app\models\Menu;
 use app\models\MenuSearch;
+use app\models\User;
 use Yii;
+use yii\data\ActiveDataProvider;
 use yii\filters\VerbFilter;
 use yii\web\NotFoundHttpException;
 use yii\web\UploadedFile;
-use app\models\Category;
-use yii\data\ActiveDataProvider;
-use app\models\User;
-use app\models\BookMenu;
 
 /**
  * MenuController implements the CRUD actions for Menu model.
@@ -122,33 +121,6 @@ class MenuController extends BaseController {
 		}
 		
 		return $this->render ( 'create', [ 
-				'model' => $model 
-		] );
-	}
-	public function actionBook() {
-		if (empty ( \Yii::$app->user->id )) {
-			\Yii::$app->session->setFlash ( "error", "Please Login to book." );
-			return $this->redirect ( [ 
-					'/user/login' 
-			] );
-		}
-		
-		$model = new BookMenu ();
-		
-		if ($model->load ( Yii::$app->request->post () )) {
-			$model->create_user_id = \Yii::$app->user->id;
-			
-			if ($model->save ()) {
-				\Yii::$app->session->setFlash ( "success", "Your booking is done. This will be notified to the Cook" );
-				return $this->redirect ( [ 
-						'view',
-						'id' => $model->id 
-				] );
-			} else {
-				\Yii::$app->session->setFlash ( "error", $model->getErrors () );
-			}
-		}
-		return $this->render ( '/book-menu/create', [ 
 				'model' => $model 
 		] );
 	}

@@ -2,6 +2,7 @@
 
 use yii\helpers\Html;
 use yii\widgets\DetailView;
+use app\models\User;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\BookMenu */
@@ -24,6 +25,25 @@ $this->params['breadcrumbs'][] = $this->title;
                 'method' => 'post',
             ],
         ]) ?>
+        <?php if (!empty(Yii::$app->user->id) && User::isCook()){
+        	if ($model->state_id == 1){
+        		echo Html::a('Mark as Complete', ['state', 'id' => $model->id], ['class' => 'btn btn-primary']) ;
+        	}elseif($model->state_id == 2){
+        		echo Html::a('Waiting for payment', "#", ['class' => 'btn btn-primary']) ;
+        	}elseif($model->state_id == 3){
+        		echo Html::a('Payement DOne. Job Completed', "#", ['class' => 'btn btn-primary']) ;
+        	}
+        }elseif (!empty(Yii::$app->user->id) && User::isUser()){
+        	if ($model->state_id == 1){
+        		echo Html::a('Pay Your Cook. Once job is completed', ['pay', 'id' => $model->id], ['class' => 'btn btn-primary']);
+        	}elseif ($model->state_id == 2){
+        		echo Html::a('Pay Your Cook, Clicking on this button.', ['pay', 'id' => $model->id], ['class' => 'btn btn-primary']);
+        	}elseif ($model->state_id == 3){
+        		echo Html::a('Job completed', ['pay', 'id' => $model->id], ['class' => 'btn btn-primary']);
+        	}
+        	
+        	}?>
+       
     </p>
 
     <?= DetailView::widget([

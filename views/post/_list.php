@@ -48,7 +48,8 @@ if ($file ['status'] == 'OK') {
 		</div>
 	</div>
 	<button>
-		<a href="<?php echo Url::toRoute(['menu/book','id'=> $model->id])?>">Get
+		<a
+			href="<?php echo Url::toRoute(['book-menu/create','id'=> $model->id])?>">Get
 			Booked </a>
 	</button>
 
@@ -65,7 +66,8 @@ if ($file ['status'] == 'OK') {
 		</blockquote>
 	</div>
 	<button>
-		<a href="<?php echo Url::toRoute(['menu/book','id'=> $model->id])?>">Get
+		<a
+			href="<?php echo Url::toRoute(['book-menu/create','id'=> $model->id])?>">Get
 			Booked </a>
 	</button>
 </article>

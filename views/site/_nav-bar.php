@@ -39,7 +39,13 @@ $postModels = (new Menu ())->getTypeOptions ();
 		}
 		?>
 		</ul></li>
-	<?php if (!Yii::$app->user->id){?>
+		<?php if(!empty(Yii::$app->user->id) && User::isUser()):?>
+		<a
+		href=<?php echo Url::toRoute(['book-menu/index'])?> title="">My
+			BOokings</a>
+		<?php endif;?>
+	<?php if (empty(Yii::$app->user->id)){?>
+	
 	<li><a href="<?= Url::toRoute(['/user/login'])?>" title="">Login/Register</a></li>
 	<?php }else{?>
 		<li><a
