@@ -82,7 +82,7 @@ use yii2mod\alert\AlertAsset;
 
 	<!-- s-content
     ================================================== -->
-           <?=\yii\bootstrap\Alert::widget ( [ 'options' => [ 'class' => 'alert-info' ] ] );?>
+<?=\yii2mod\alert\Alert::widget ( );?>
            
 
 	<?=$content;?>

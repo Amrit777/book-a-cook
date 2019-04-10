@@ -73,5 +73,5 @@ use yii2mod\alert\AlertAsset;
 		</div>
 	</nav>
 </header>
-<?=\yii2mod\alert\Alert::widget ( [ 'options' => [ 'class' => 'alert-info' ] ] );?>
+<?=\yii2mod\alert\Alert::widget ( );?>
 

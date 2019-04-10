@@ -1,6 +1,6 @@
 <?php
-use yii\helpers\Html;
 use app\widgets\Alert;
+use yii\helpers\Html;
 
 /* @var $this \yii\web\View */
 /* @var $content string */
@@ -53,7 +53,7 @@ Yii::$app->assetManager->bundles ['yii\web\JqueryAsset'] = false;
 	<!-- /NAVIGATION -->
 
 	<div id="home" class="main-container">
-	        <?=Alert::widget ( [ 'options' => [ 'class' => 'alert-info' ] ] );?>
+<?=\yii2mod\alert\Alert::widget ( );?>
 	
     	<?= $content;?>
 	</div>

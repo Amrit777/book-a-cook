@@ -1,5 +1,7 @@
 <?php
 use yii\helpers\Url;
+use app\models\BookMenu;
+use app\models\User;
 $file = $model->fileExists ();
 if ($file ['status'] == 'OK') {
 	?>
@@ -48,10 +50,28 @@ if ($file ['status'] == 'OK') {
 		</div>
 	</div>
 	<button>
-		<a
-			href="<?php echo Url::toRoute(['book-menu/create','id'=> $model->id])?>">Get
-			Booked </a>
-	</button>
+	
+	<?php
+	if (User::isUser ()) {
+		if ($model->checkBooking ( $model->id )) {
+			echo '<a href="#">Already Booked </a>';
+		} else {
+			echo '<a
+			href=' . Url::toRoute ( [ 
+					'book-menu/create',
+					'id' => $model->id 
+			] ) . '>Get	Booked </a>';
+		}
+	} else {
+		echo '<a
+			href=' . Url::toRoute ( [ 
+				'book-menu/create',
+				'id' => $model->id 
+		] ) . '>Get
+			Booked </a>';
+	}
+	?>
+			</button>
 
 </article>
 <?php
