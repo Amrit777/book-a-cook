@@ -1,3 +1,6 @@
+<?php
+use app\models\User;
+?>
 <aside class="main-sidebar">
 
 	<section class="sidebar">
@@ -14,44 +17,54 @@
 
 
         <?php
-        
-        echo dmstr\widgets\Menu::widget([
-            'options' => [
-                'class' => 'sidebar-menu tree',
-                'data-widget' => 'tree'
-            ],
-            'items' => [
-                [
-                    'label' => 'Menu',
-                    'options' => [
-                        'class' => 'header'
-                    ]
-                ],
-                [
-                    'label' => 'Users',
-                    'icon' => 'users',
-                    'url' => [
-                        '/user'
-                    ]
-                ],
-                
-                [
-                    'label' => 'Category',
-                    'icon' => 'picture-o',
-                    'url' => [
-                        '/category'
-                    ]
-                ],
-                [
-                    'label' => 'Menu',
-                    'icon' => 'picture-o',
-                    'url' => [
-                        '/menu'
-                    ]
-                ]
-            
-            ]
-        ])?>
+								
+								echo dmstr\widgets\Menu::widget ( [ 
+										'options' => [ 
+												'class' => 'sidebar-menu tree',
+												'data-widget' => 'tree' 
+										],
+										'items' => [ 
+												[ 
+														'label' => 'Menu',
+														'options' => [ 
+																'class' => 'header' 
+														] 
+												],
+												[ 
+														'label' => 'Users',
+														'icon' => 'users',
+														'url' => [ 
+																'/user' 
+														],
+														'visible' => User::isAdmin () 
+												],
+												
+												[ 
+														'label' => 'Category',
+														'icon' => 'picture-o',
+														'url' => [ 
+																'/category' 
+														],
+														'visible' => User::isAdmin () 
+												],
+												[ 
+														'label' => 'Menu',
+														'icon' => 'picture-o',
+														'url' => [ 
+																'/menu' 
+														] 
+												],
+												[ 
+														'label' => 'Bookings',
+														'icon' => 'users',
+														'url' => [ 
+																'/book-menu' 
+														],
+														'visible' => User::isAdmin () || User::isCook () 
+												] 
+										
+										] 
+								] )?>
 
     </section>
 

@@ -5,14 +5,14 @@ use yii\helpers\Html;
 /* @var $content string */
 
 if (! Yii::$app->user->isGuest) {
-    
-    app\assets\AppAsset::register($this);
-    
-    dmstr\web\AdminLteAsset::register($this);
-    
-    $directoryAsset = Yii::$app->assetManager->getPublishedUrl('@vendor/almasaeed2010/adminlte/dist');
-    
-    ?>
+	
+	app\assets\AppAsset::register ( $this );
+	
+	dmstr\web\AdminLteAsset::register ( $this );
+	
+	$directoryAsset = Yii::$app->assetManager->getPublishedUrl ( '@vendor/almasaeed2010/adminlte/dist' );
+	
+	?>
     <?php $this->beginPage() ?>
 <!DOCTYPE html>
 <html lang="<?= Yii::$app->language ?>">
@@ -20,7 +20,7 @@ if (! Yii::$app->user->isGuest) {
 <meta charset="<?= Yii::$app->charset ?>" />
 <meta name="viewport" content="width=device-width, initial-scale=1">
         <?= Html::csrfMetaTags() ?>
-        <title><?= Html::encode($this->title) ?></title>
+        <title><?= Html::encode("Book Your Cook") ?></title>
         <?php $this->head() ?>
         
         <link rel="stylesheet" type="text/css"

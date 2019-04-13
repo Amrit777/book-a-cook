@@ -21,18 +21,7 @@ use app\models\SubCategory;
 				<ul class="header-top-links">
 					<li><a href="<?= Url::toRoute(['/site/contact']) ?>"><?=\yii::t('app','Contact Us')?></a></li>
 					<li><a href="<?= Url::toRoute(['/site/faq']) ?>"><?=\yii::t('app','FAQ')?></a></li>
-					<!-- <li class="dropdown default-dropdown"><a class="dropdown-toggle"
-							data-toggle="dropdown" aria-expanded="true">ENG <i
-								class="fa fa-caret-down"></i></a>
-							<ul class="custom-menu">
-								<li><a href="#">English (ENG)</a></li>
-							</ul></li>
-						<li class="dropdown default-dropdown"><a class="dropdown-toggle"
-							data-toggle="dropdown" aria-expanded="true">USD <i
-								class="fa fa-caret-down"></i></a>
-							<ul class="custom-menu">
-								<li><a href="#">USD ($)</a></li>
-							</ul></li> -->
+
 				</ul>
 			</div>
 		</div>
@@ -45,9 +34,7 @@ use app\models\SubCategory;
 				<div class="col-md-3">
 					<div class="header-logo">
 						<a class="logo" href="<?= Url::home() ?>">
-							<h1>
-								Inkredible <span>Toner</span>
-							</h1>
+							<h1>Blog</h1>
 						</a>
 					</div>
 				</div>
@@ -95,8 +82,8 @@ use app\models\SubCategory;
 								<li><a href="<?= Url::toRoute(['order/checkout']) ?>"><i
 										class="fa fa-check"></i> Checkout</a></li>
 								<li>
-                                        <?=Html::a('<i
-                                                    class="fa fa-sign-out"></i>Sign out', ['/user/logout'], ['data-method' => 'post'])?>
+                                        <?=Html::a ( '<i
+                                                    class="fa fa-sign-out"></i>Sign out', [ '/user/logout' ], [ 'data-method' => 'post' ] )?>
 
 
 
@@ -143,12 +130,12 @@ use app\models\SubCategory;
                       
                       
 						<?php
-                        $models = SubCategory::findAll([
-                            'category_id' => $cat->id,
-                            'sub_category_id' => 0
-                        ]);
-                        
-                        ?>
+																							$models = SubCategory::findAll ( [ 
+																									'category_id' => $cat->id,
+																									'sub_category_id' => 0 
+																							] );
+																							
+																							?>
 																							
 	<?php if(empty(!$models)){?>
 																							
@@ -172,6 +159,26 @@ use app\models\SubCategory;
 						<?php }else{?>
 						
 						
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
 					
 					
 					

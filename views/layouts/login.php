@@ -1,11 +1,12 @@
 <?php
+use app\widgets\Alert;
 use yii\helpers\Html;
 
 /* @var $this \yii\web\View */
 /* @var $content string */
 
-app\assets\FrontendAsset::register($this);
-Yii::$app->assetManager->bundles['yii\web\JqueryAsset'] = false;
+app\assets\FrontendAsset::register ( $this );
+Yii::$app->assetManager->bundles ['yii\web\JqueryAsset'] = false;
 ?>
     <?php $this->beginPage() ?>
 <!DOCTYPE html>
@@ -50,13 +51,15 @@ Yii::$app->assetManager->bundles['yii\web\JqueryAsset'] = false;
 <body ng-app="ShopingCart">
     <?php $this->beginBody() ?>
 	<!-- /NAVIGATION -->
-	
+
 	<div id="home" class="main-container">
+<?=\yii2mod\alert\Alert::widget ( );?>
+	
     	<?= $content;?>
 	</div>
 	<?php
-echo $this->render('main-footer');
-?>
+	echo $this->render ( 'main-footer' );
+	?>
 
 	<!-- Javascript -->
 

@@ -1,13 +1,16 @@
 <?php
 use yii\helpers\Url;
-$file = $model->fileExists($model, null, null, true);
-if ($file['status'] == 'OK') {
-    ?>
+use app\models\BookMenu;
+use app\models\User;
+$file = $model->fileExists ();
+if ($file ['status'] == 'OK') {
+	?>
 <article
 	class="masonry__brick entry format-standard aos-init aos-animate">
 
 	<div class="entry__thumb">
-		<a href="<?php echo Url::toRoute(['posts/'.$model->slug])?>"
+		<a
+			href="<?php echo Url::toRoute(['/menu/detail','title'=> $model->title])?>"
 			class="entry__thumb-link"> 
 			<?php echo $model->getImageFile($model,'default.jpg',[],false, $model->title);?>
 		</a>
@@ -20,7 +23,8 @@ if ($file['status'] == 'OK') {
 				<?= $model->created_on ?>
 			</div>
 			<h1 class="entry__title">
-				<a href="<?php echo Url::toRoute(['posts/'.$model->slug])?>"
+				<a
+					href="<?php echo Url::toRoute(['/menu/detail','title'=> $model->title])?>"
 					class="entry__thumb-link"> 
 			<?= $model->title ?>
 		</a>
@@ -41,15 +45,38 @@ if ($file['status'] == 'OK') {
 		</div>
 		<div class="entry__meta">
 			<span class="entry__meta-links"> <a
-				href="<?php echo Url::toRoute(['/post/category/'.$model->category->title]);?>"><?= $model->category->title ?></a>
+				href="<?php echo Url::toRoute(['/menu/category/'.$model->category->title]);?>"><?= $model->category->title ?></a>
 			</span>
 		</div>
 	</div>
+	<button>
+	
+	<?php
+	if (User::isUser ()) {
+		if ($model->checkBooking ( $model->id )) {
+			echo '<a href="#">Already Booked </a>';
+		} else {
+			echo '<a
+			href=' . Url::toRoute ( [ 
+					'book-menu/create',
+					'id' => $model->id 
+			] ) . '>Get	Booked </a>';
+		}
+	} else {
+		echo '<a
+			href=' . Url::toRoute ( [ 
+				'book-menu/create',
+				'id' => $model->id 
+		] ) . '>Get
+			Booked </a>';
+	}
+	?>
+			</button>
 
 </article>
 <?php
 } else {
-    ?>
+	?>
 <article class="masonry__brick entry format-quote aos-init aos-animate"
 	data-aos="fade-up">
 	<div class="entry__thumb">
@@ -58,5 +85,10 @@ if ($file['status'] == 'OK') {
 			<cite><?= $model->getCreatedUser()?></cite> <cite><?= $model->created_on ?></cite>
 		</blockquote>
 	</div>
+	<button>
+		<a
+			href="<?php echo Url::toRoute(['book-menu/create','id'=> $model->id])?>">Get
+			Booked </a>
+	</button>
 </article>
 <?php }?>

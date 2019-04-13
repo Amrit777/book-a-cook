@@ -1,5 +1,4 @@
 <?php
-
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 
@@ -14,24 +13,30 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'title')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'category_id')->textInput() ?>
+    <?= $form->field($model, 'category_id')->dropDownList($model->getCategoryList()) ?>
 
     <?= $form->field($model, 'content')->textInput(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'price')->textInput() ?>
 
     <?= $form->field($model, 'time_to_prepare')->textInput() ?>
+<?php
+echo $form->field ( $model, 'file' )->widget ( \kartik\file\FileInput::classname (), [ 
+		'options' => [ 
+				'accept' => 'image/*' 
+		],
+		'pluginOptions' => [ 
+				'initialPreviewShowDelete' => false,
+				
+				'initialPreview' => [ 
+						$model->profileImage () 
+				],
+				'overwriteInitial' => true 
+		
+		] 
 
-    <?= $form->field($model, 'created_on')->textInput() ?>
-
-    <?= $form->field($model, 'updated_on')->textInput() ?>
-
-    <?= $form->field($model, 'state_id')->textInput() ?>
-
-    <?= $form->field($model, 'type_id')->textInput() ?>
-
-    <?= $form->field($model, 'create_user_id')->textInput() ?>
-
+] );
+?>
     <div class="form-group">
         <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>
     </div>

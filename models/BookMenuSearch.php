@@ -4,12 +4,12 @@ namespace app\models;
 
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use app\models\Menu;
+use app\models\BookMenu;
 
 /**
- * MenuSearch represents the model behind the search form of `app\models\Menu`.
+ * BookMenuSearch represents the model behind the search form of `app\models\BookMenu`.
  */
-class MenuSearch extends Menu {
+class BookMenuSearch extends BookMenu {
 	/**
 	 *
 	 * {@inheritdoc}
@@ -20,9 +20,8 @@ class MenuSearch extends Menu {
 				[ 
 						[ 
 								'id',
-								'category_id',
-								'price',
-								'time_to_prepare',
+								'menu_id',
+								'number_of_person',
 								'state_id',
 								'type_id',
 								'create_user_id' 
@@ -31,9 +30,8 @@ class MenuSearch extends Menu {
 				],
 				[ 
 						[ 
-								'title',
-								'content',
-								'created_on',
+								'booking_date',
+								'booking_time',
 								'updated_on' 
 						],
 						'safe' 
@@ -59,10 +57,14 @@ class MenuSearch extends Menu {
 	 * @return ActiveDataProvider
 	 */
 	public function search($params) {
-		$query = Menu::find ();
-		if (User::isCook ()) {
+		$query = BookMenu::find ()->alias ( "bm" );
+		if (User::isUser ()) {
 			$query->where ( [ 
 					'create_user_id' => \Yii::$app->user->id 
+			] );
+		} elseif (User::isCook ()) {
+			$query->joinWith ( "menu m" )->where ( [ 
+					'm.create_user_id' => \Yii::$app->user->id 
 			] );
 		}
 		
@@ -83,24 +85,13 @@ class MenuSearch extends Menu {
 		// grid filtering conditions
 		$query->andFilterWhere ( [ 
 				'id' => $this->id,
-				'category_id' => $this->category_id,
-				'price' => $this->price,
-				'time_to_prepare' => $this->time_to_prepare,
-				'created_on' => $this->created_on,
+				'menu_id' => $this->menu_id,
+				'booking_date' => $this->booking_date,
+				'booking_time' => $this->booking_time,
+				'number_of_person' => $this->number_of_person,
 				'updated_on' => $this->updated_on,
 				'state_id' => $this->state_id,
-				'type_id' => $this->type_id,
-				'create_user_id' => $this->create_user_id 
-		] );
-		
-		$query->andFilterWhere ( [ 
-				'like',
-				'title',
-				$this->title 
-		] )->andFilterWhere ( [ 
-				'like',
-				'content',
-				$this->content 
+				'type_id' => $this->type_id 
 		] );
 		
 		return $dataProvider;

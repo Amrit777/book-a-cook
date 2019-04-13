@@ -2,8 +2,10 @@
 use yii\helpers\Url;
 use app\models\Category;
 use app\models\Post;
-$models = Category::find()->all();
-$postModels = (new Post())->getTypeOptions();
+use app\models\User;
+use app\models\Menu;
+$models = Category::find ()->all ();
+$postModels = (new Menu ())->getTypeOptions ();
 ?>
 
 <ul class="header__nav">
@@ -12,31 +14,46 @@ $postModels = (new Post())->getTypeOptions();
 	<li class="has-children"><a href="#0" title="">Categories</a>
 		<ul class="sub-menu">
 		<?php
-if (! empty($models)) {
-    foreach ($models as $model) {
-        echo "<li><a href=" . Url::toRoute([
-            '/category/post',
-            'id' => $model->id
-        ]) . ">" . $model->title . "</a></li>";
-    }
-}
-?>
+		if (! empty ( $models )) {
+			foreach ( $models as $model ) {
+				echo "<li><a href=" . Url::toRoute ( [ 
+						'/category/menu',
+						'id' => $model->id 
+				] ) . ">" . $model->title . "</a></li>";
+			}
+		}
+		?>
 		</ul></li>
-	<li class="has-children"><a href="#0" title="">Blog</a>
+	<li class="has-children"><a href="#0" title="">Menu</a>
 		<ul class="sub-menu">
 		<?php
-
-if (! empty($postModels)) {
-    
-    foreach ($postModels as $key => $value) {
-        echo "<li><a href=" . Url::toRoute([
-            '/post/type',
-            'type' => $key
-        ]) . ">" . $value . "</a></li>";
-    }
-}
-?>
+		
+		if (! empty ( $postModels )) {
+			
+			foreach ( $postModels as $value ) {
+				echo "<li><a href=" . Url::toRoute ( [ 
+						'/menu/detail',
+						'title' => $value 
+				] ) . ">" . $value . "</a></li>";
+			}
+		}
+		?>
 		</ul></li>
-	<li><a href="<?= Url::toRoute(['/site/about'])?>" title="">About</a></li>
-	<li><a href="<?= Url::toRoute(['/site/contact'])?>" title="">Contact</a></li>
+		<?php if(!empty(Yii::$app->user->id) && User::isUser()):?>
+		<a
+		href=<?php echo Url::toRoute(['book-menu/index'])?> title="">My
+			BOokings</a>
+		<?php endif;?>
+	<?php if (empty(Yii::$app->user->id)){?>
+	
+	<li><a href="<?= Url::toRoute(['/user/login'])?>" title="">Login/Register</a></li>
+	<?php }else{?>
+		<li><a
+		href="<?= Url::toRoute(['/user/view','id' => Yii::$app->user->id])?>"
+		title=""><?php echo Yii::$app->user->identity->full_name?></a>
+		<ul class="sub-user">
+			<li><a href="<?php echo Url::toRoute(['user/logout']);?>">Logout</a></li>
+		</ul></li>
+	
+	<?php }?>
 </ul>
