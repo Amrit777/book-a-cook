@@ -2,6 +2,7 @@
 use yii\helpers\Html;
 use app\widgets\Alert;
 use yii2mod\alert\AlertAsset;
+use yii\base\Widget;
 ?>
 <?php $this->beginPage() ?>
 
@@ -82,7 +83,7 @@ use yii2mod\alert\AlertAsset;
 
 	<!-- s-content
     ================================================== -->
-<?=\yii2mod\alert\Alert::widget ( );?>
+<?=\yii2mod\alert\Alert::widget ();?>
            
 
 	<?=$content;?>
