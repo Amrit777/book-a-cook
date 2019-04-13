@@ -20,7 +20,7 @@ if (! Yii::$app->user->isGuest) {
 <meta charset="<?= Yii::$app->charset ?>" />
 <meta name="viewport" content="width=device-width, initial-scale=1">
         <?= Html::csrfMetaTags() ?>
-        <title><?= Html::encode($this->title) ?></title>
+        <title><?= Html::encode("Book Your Cook") ?></title>
         <?php $this->head() ?>
         
         <link rel="stylesheet" type="text/css"

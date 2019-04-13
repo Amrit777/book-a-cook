@@ -1,6 +1,7 @@
 <?php
 use yii\helpers\Html;
 use app\widgets\Alert;
+use yii2mod\alert\AlertAsset;
 ?>
 <?php $this->beginPage() ?>
 
@@ -81,7 +82,8 @@ use app\widgets\Alert;
 
 	<!-- s-content
     ================================================== -->
-           <?=Alert::widget ( [ 'options' => [ 'class' => 'alert-info' ] ] );?>
+<?=\yii2mod\alert\Alert::widget ( );?>
+           
 
 	<?=$content;?>
 	<!-- s-extra
@@ -89,7 +91,6 @@ use app\widgets\Alert;
 	<section class="s-extra">
 
 		<div class="row top">
-			<?=Yii::$app->controller->renderPartial('/post/_popular', ['dataProvider' => Yii::$app->controller->posts])?>
 			<!-- end popular -->
 
 			<div class="col-four md-six tab-full about">

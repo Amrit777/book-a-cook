@@ -1,6 +1,5 @@
 <?php
 use yii\helpers\Html;
-use app\widgets\Alert;
 
 /* @var $this \yii\web\View */
 /* @var $content string */
@@ -20,7 +19,6 @@ dmstr\web\AdminLteAsset::register ( $this );
 <body class="login-page">
 
 <?php $this->beginBody() ?> 
-       <?=Alert::widget ( [ 'options' => [ 'class' => 'alert-info' ] ] );?>
 <?php $this->endBody() ?>
 </body>
 </html>

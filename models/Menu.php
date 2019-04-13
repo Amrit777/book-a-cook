@@ -38,6 +38,12 @@ class Menu extends BaseActiveRecord {
 	public function getTypeOptions() {
 		return ArrayHelper::map ( self::find ()->all (), "title", "title" );
 	}
+	public function checkBooking($id) {
+		return BookMenu::find ()->where ( [ 
+				'menu_id' => $id,
+				'create_user_id' => \Yii::$app->user->id 
+		] )->exists ();
+	}
 	
 	/**
 	 *

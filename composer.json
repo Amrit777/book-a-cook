@@ -26,10 +26,11 @@
         "2amigos/yii2-gallery-widget": "~1.0",
         "yiisoft/yii2-imagine": "^2.1",
         "2amigos/yii2-ckeditor-widget": "^2.1",
-        "2amigos/yii2-date-picker-widget": "~1.0",
         "yiisoft/yii2-authclient": "^2.1",
         "boundstate/yii2-importexport": "^0.0.3",
-        "moonlandsoft/yii2-phpexcel": "^1.1"
+        "moonlandsoft/yii2-phpexcel": "^1.1",
+        "kartik-v/yii2-widget-datepicker": "dev-master",
+        "yii2mod/yii2-sweet-alert": "*"
     },
     "require-dev": {
         "yiisoft/yii2-debug": "~2.0.0",

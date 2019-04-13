@@ -53,6 +53,14 @@ use app\models\User;
 														'url' => [ 
 																'/menu' 
 														] 
+												],
+												[ 
+														'label' => 'Bookings',
+														'icon' => 'users',
+														'url' => [ 
+																'/book-menu' 
+														],
+														'visible' => User::isAdmin () || User::isCook () 
 												] 
 										
 										] 

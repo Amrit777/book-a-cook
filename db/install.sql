@@ -44,6 +44,22 @@ create table `tbl_category`(
   CONSTRAINT `fk_category_create_user_id` FOREIGN KEY (`create_user_id`) REFERENCES `tbl_user` (`id`)
 )ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
+drop table if exists `tbl_book_menu`;
+create table `tbl_book_menu`(
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `menu_id` int(11) NOT NULL,
+  `booking_date` date DEFAULT NULL,
+  `booking_time` time DEFAULT NULL,
+  `number_of_person` int(11) DEFAULT '0',
+  `updated_on` datetime DEFAULT NULL,
+  `state_id` int(11)  DEFAULT '1',
+  `type_id` int(11)  DEFAULT '0',
+  `create_user_id` int(11) NOT NULL,
+  PRIMARY KEY (`id`),
+  FOREIGN KEY (create_user_id) REFERENCES tbl_user(id),
+  CONSTRAINT `fk_book_menu_create_user_id` FOREIGN KEY (`create_user_id`) REFERENCES `tbl_user` (`id`)
+)ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
 -- menu create --
 
 DROP table if exists `tbl_menu`;
